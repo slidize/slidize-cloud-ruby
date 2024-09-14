@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
       # run before each test
@@ -41,7 +43,7 @@ describe 'SlidizeApi' do
   # @return [File]
   describe 'replace_text test' do
     it 'should work' do
-      document_paths = ["../../TestData/test.pptx", "../../TestData/master.pptx"]
+      document_paths = ["TestData/test.pptx", "TestData/master.pptx"]
       documents = document_paths.map { |path| File.new(path, 'rb') } 
 
       text_options = SlidizeCloud::ReplaceTextOptions.new
@@ -50,7 +52,7 @@ describe 'SlidizeApi' do
       text_options.ignore_case = true
       options = { options: text_options }
 
-      result = @api_instance.replace_text(options, documents)
+      result = @api_instance.replace_text(documents, options)
       expect(result).not_to be_nil
 
     ensure
@@ -66,7 +68,7 @@ describe 'SlidizeApi' do
   # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
   describe 'replace_text_with_http_info test' do
     it 'should work' do
-      document_paths = ["../../TestData/test.pptx", "../../TestData/master.pptx"]
+      document_paths = ["TestData/test.pptx", "TestData/master.pptx"]
       documents = document_paths.map { |path| File.new(path, 'rb') } 
 
       text_options = SlidizeCloud::ReplaceTextOptions.new
@@ -75,7 +77,7 @@ describe 'SlidizeApi' do
       text_options.ignore_case = true
       options = { options: text_options }
 
-      result = @api_instance.replace_text_with_http_info(options, documents)
+      result = @api_instance.replace_text_with_http_info(documents, options)
       expect(result).not_to be_nil
       expect(result).to be_a(Array)
       expect(result[1]).to eq(200)

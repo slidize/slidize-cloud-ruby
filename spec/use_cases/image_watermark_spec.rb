@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
       # run before each test
@@ -42,10 +44,10 @@ describe 'SlidizeApi' do
     # @return [File]
     describe 'image_watermark test' do
         it 'should work' do
-            document_paths = ["../../TestData/test.pptx"]
+            document_paths = ["TestData/test.pptx"]
             documents = document_paths.map { |path| File.new(path, 'rb') } 
       
-            image =  File.new("../../TestData/watermark.png", 'rb') 
+            image =  File.new("TestData/watermark.png", 'rb')
 
             watermark_options = SlidizeCloud::ImageWatermarkOptions.new
             watermark_options.angle = -45
@@ -70,10 +72,10 @@ describe 'SlidizeApi' do
     # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     describe 'image_watermark_with_http_info test' do
         it 'should work' do
-            document_paths = ["../../TestData/test.pptx"]
+            document_paths = ["TestData/test.pptx"]
             documents = document_paths.map { |path| File.new(path, 'rb') } 
       
-            image =  File.new("../../TestData/watermark.png", 'rb') 
+            image =  File.new("TestData/watermark.png", 'rb')
 
             watermark_options = SlidizeCloud::ImageWatermarkOptions.new
             watermark_options.angle = -45

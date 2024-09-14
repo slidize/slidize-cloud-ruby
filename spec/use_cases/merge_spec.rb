@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
       # run before each test
@@ -42,7 +44,7 @@ describe 'SlidizeApi' do
   # @return [File]
   describe 'merge test' do
     it 'should work' do
-      document_paths = ["../../TestData/test.pptx", "../../TestData/master.pptx"]
+      document_paths = ["TestData/test.pptx", "TestData/master.pptx"]
       documents = document_paths.map { |path| File.new(path, 'rb') } 
 
       merge_options = SlidizeCloud::MergeOptions.new
@@ -67,7 +69,7 @@ describe 'SlidizeApi' do
   # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
   describe 'merge_with_http_info test' do
     it 'should work' do
-      document_paths = ["../../TestData/test.pptx", "../../TestData/master.pptx"]
+      document_paths = ["TestData/test.pptx", "TestData/master.pptx"]
       documents = document_paths.map { |path| File.new(path, 'rb') } 
 
       merge_options = SlidizeCloud::MergeOptions.new

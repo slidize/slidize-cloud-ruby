@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
         # run before each test
@@ -41,13 +43,13 @@ describe 'SlidizeApi' do
     # @return [File]
     describe 'unprotect test' do
         it 'should work' do
-            document =  File.new("../../TestData/protected.pptx", 'rb') 
+            document =  File.new("TestData/protected.pptx", 'rb') 
 
             result = @api_instance.unprotect("password", document)
             expect(result).not_to be_nil
 
         ensure
-            document.close
+            document&.close
         end
     end
 
@@ -59,7 +61,7 @@ describe 'SlidizeApi' do
     # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     describe 'unprotect_with_http_info test' do
         it 'should work' do
-            document =  File.new("../../TestData/protected.pptx", 'rb') 
+            document =  File.new("TestData/protected.pptx", 'rb') 
 
             result = @api_instance.unprotect_with_http_info("password", document)
             expect(result).not_to be_nil
@@ -67,7 +69,7 @@ describe 'SlidizeApi' do
             expect(result[1]).to eq(200)
 
         ensure
-            document.close
+            document&.close
         end
     end
 end

@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
       # run before each test
@@ -41,7 +43,7 @@ describe 'SlidizeApi' do
   # @return [File]
   describe 'convert test' do
     it 'should work' do
-      document_paths = ["../../TestData/test.pptx"]
+      document_paths = ["TestData/test.pptx"]
       documents = document_paths.map { |path| File.new(path, 'rb') } 
       result = @api_instance.convert("pdf", documents)
       expect(result).not_to be_nil
@@ -58,7 +60,7 @@ describe 'SlidizeApi' do
   # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
   describe 'convert_with_http_info test' do
     it 'should work' do
-      document_paths = ["../../TestData/test.pptx"]
+      document_paths = ["TestData/test.pptx"]
       documents = document_paths.map { |path| File.new(path, 'rb') } 
       result = @api_instance.convert_with_http_info("pdf", documents)
       expect(result).not_to be_nil

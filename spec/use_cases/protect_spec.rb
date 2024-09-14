@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
       # run before each test
@@ -41,7 +43,7 @@ describe 'SlidizeApi' do
     # @return [File]
     describe 'protect test' do
         it 'should work' do
-            document =  File.new("../../TestData/test.pptx", 'rb') 
+            document =  File.new("TestData/test.pptx", 'rb')
 
             protection_options = SlidizeCloud::ProtectionOptions.new
             protection_options.view_password = "password"
@@ -53,7 +55,7 @@ describe 'SlidizeApi' do
             expect(result).not_to be_nil
 
         ensure
-            document.close
+            document&.close
         end
 
         # unit tests for protect_with_http_info
@@ -63,7 +65,7 @@ describe 'SlidizeApi' do
         # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
         describe 'protect_with_http_info test' do
             it 'should work' do
-                document =  File.new("../../TestData/test.pptx", 'rb') 
+                document =  File.new("TestData/test.pptx", 'rb')
 
                 protection_options = SlidizeCloud::ProtectionOptions.new
                 protection_options.view_password = "password"
@@ -77,7 +79,7 @@ describe 'SlidizeApi' do
                 expect(result[1]).to eq(200)
 
             ensure
-                document.close
+                document&.close
             end
         end
     end

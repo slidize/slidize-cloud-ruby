@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
         # run before each test
@@ -42,7 +44,7 @@ describe 'SlidizeApi' do
     # @return [File]
     describe 'split test' do
         it 'should work' do
-            document =  File.new("../../TestData/test.pptx", 'rb') 
+            document =  File.new("TestData/test.pptx", 'rb') 
 
             split_options = SlidizeCloud::SplitOptions.new
             split_options.slides_range = "1,2-4,5"
@@ -51,7 +53,7 @@ describe 'SlidizeApi' do
             result = @api_instance.split("pdf", document, options)
             expect(result).not_to be_nil
         ensure
-            document.close     
+            document&.close
         end
     end
 
@@ -64,7 +66,7 @@ describe 'SlidizeApi' do
     # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     describe 'split_with_http_info test' do
         it 'should work' do
-            document =  File.new("../../TestData/test.pptx", 'rb') 
+            document =  File.new("TestData/test.pptx", 'rb') 
 
             split_options = SlidizeCloud::SplitOptions.new
             split_options.slides_range = "1,2-4,5"
@@ -75,7 +77,7 @@ describe 'SlidizeApi' do
             expect(result).to be_a(Array)
             expect(result[1]).to eq(200)
         ensure
-            document.close     
+            document&.close
         end
     end
 end

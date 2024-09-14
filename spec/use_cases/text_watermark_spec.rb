@@ -27,6 +27,8 @@
  */
 =end
 
+require 'spec_helper'
+
 describe 'SlidizeApi' do
     before do
       # run before each test
@@ -41,7 +43,7 @@ describe 'SlidizeApi' do
     # @return [File]
     describe 'text_watermark test' do
         it 'should work' do
-            document_paths = ["../../TestData/test.pptx"]
+            document_paths = ["TestData/test.pptx"]
             documents = document_paths.map { |path| File.new(path, 'rb') } 
 
             watermark_options = SlidizeCloud::TextWatermarkOptions.new
@@ -69,7 +71,7 @@ describe 'SlidizeApi' do
     # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     describe 'text_watermark_with_http_info test' do
         it 'should work' do
-            document_paths = ["../../TestData/test.pptx"]
+            document_paths = ["TestData/test.pptx"]
             documents = document_paths.map { |path| File.new(path, 'rb') } 
 
             watermark_options = SlidizeCloud::TextWatermarkOptions.new
